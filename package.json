@@ -1,0 +1,45 @@
+{
+  "name": "phambili-be",
+  "version": "1.0.0",
+  "description": "[![CircleCI](https://img.shields.io/circleci/project/github/auth0-samples/auth0-express-api-samples.svg?style=flat-square)](https://circleci.com/gh/auth0-samples/auth0-express-api-samples/tree/master)",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "express-jwt": "^6.0.0",
+    "express-jwt-authz": "^2.4.0",
+    "graphql": "^15.3.0",
+    "graphql-tools": "^6.0.12",
+    "graphql-yoga": "^1.18.3",
+    "helmet": "^3.23.3",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.8.1",
+    "mongoose": "^5.9.22",
+    "request": "^2.88.2",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/preset-env": "^7.10.4"
+  },
+  "scripts": {
+    "build": "babel src -d deploy --source-maps",
+    "start": "nodemon src/server.js --exec babel-node",
+    "serve": "node deploy/src/server.js",
+    "clean": "rimraf deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dservidie/phambili-be.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dservidie/phambili-be/issues"
+  },
+  "homepage": "https://github.com/dservidie/phambili-be#readme"
+}
