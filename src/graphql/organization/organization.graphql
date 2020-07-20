@@ -1,0 +1,23 @@
+type Query {
+   Organizations: [Organization!]
+}
+
+type Organization {
+   _id: ID
+   name: String!
+   type: String!
+   status: String!
+}
+
+type Mutation {
+   createOrganization(organizationInput: OrganizationInput): Organization
+   deleteOrganization(_id: ID): Organization
+   updateOrganization(_id: ID, organizationInput: OrganizationInput): Organization
+}
+
+input OrganizationInput {
+   _id: ID
+   name: String!
+   type: String!
+   status: String!
+}

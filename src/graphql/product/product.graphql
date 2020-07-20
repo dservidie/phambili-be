@@ -1,0 +1,35 @@
+type Query {
+   Products: [Product!]
+}
+
+type Product {
+   _id: ID
+   organizationID: String!
+   name: String!
+   shortName: String!
+   logo: String
+   favicon: String
+   foreColor: String!
+   backColor: String!
+   urlName: String!
+   version: String
+}
+
+type Mutation {
+   createProduct(productInput: ProductInput): Product
+   deleteProduct(_id: ID): Product
+   updateProduct(_id: ID, productInput: ProductInput): Product
+}
+
+input ProductInput {
+   _id: ID
+   organizationID: String!
+   name: String!
+   shortName: String!
+   logo: String
+   favicon: String
+   foreColor: String!
+   backColor: String!
+   urlName: String!
+   version: String
+}

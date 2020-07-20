@@ -1,0 +1,38 @@
+type Query {
+   Features: [Feature!]
+}
+
+type Feature {
+   _id: ID
+   campaignID: ID!
+   title: String!
+   description: String!
+   comments: [Comment!]
+}
+
+type Comment {
+   _id: ID
+   user: String!
+   commentText: String!
+}
+
+type Mutation {
+   createFeature(featureInput: FeatureInput): Feature
+   deleteFeature(_id: ID): Feature
+   updateFeature(_id: ID, featureInput: FeatureInput): Feature
+
+   addComment(commentInput: CommentInput): Feature
+}
+
+input FeatureInput {
+   _id: ID
+   campaignID: ID!
+   title: String!
+   description: String!
+}
+
+input CommentInput {
+   _id: ID
+   featureID: ID!
+   commentText: String!
+}

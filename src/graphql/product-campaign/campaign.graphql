@@ -1,0 +1,26 @@
+type Query {
+   Campaigns: [Campaign!]
+}
+
+type Campaign {
+   _id: ID
+   name: String!
+   productID: ID!
+   type: String!
+   features: [Feature!]
+   status: String!
+}
+
+type Mutation {
+   createCampaign(campaignInput: CampaignInput): Campaign
+   deleteCampaign(_id: ID): Campaign
+   updateCampaign(_id: ID, campaignInput: CampaignInput): Campaign
+}
+
+input CampaignInput {
+   _id: ID
+   name: String!
+   productID: ID!
+   type: String!
+   status: String!
+}

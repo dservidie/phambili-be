@@ -1,49 +1,22 @@
 require("dotenv").config();
-import express from "express";
-import { graphqlHTTP } from "express-graphql";
-import helmet from "helmet";
-import cors from "cors";
+import { GraphQLServer } from "graphql-yoga";
 import jwtChecker from "./security/jwt-checker";
-import routes from "./routes";
-import schema from "./schema";
-import { connect } from "./database";
+import typeDefs from "./graphql/typeDefs";
+import resolvers from "./graphql/resolvers";
 
-const app = express();
-connect();
-
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Unsecure endpoints
-// Set up Plugins and providers
-//var root = { hello: () => 'Hello world!' }
-app.use(
-   "/graphql",
-   graphqlHTTP({
-      schema: schema,
-      //  rootValue: root,
-      graphiql: true,
-      context: {
-         messageId: "test",
-      },
-   })
-);
-
-// API authentication
-app.use(jwtChecker);
-
-// Adding the routes
-routes(app);
-
-/*
-app.use('/graphql', graphqlHTTP({
-
-}));
-
-*/
-
-app.listen(5000, () => {
-   console.log("PHAMBILI SERVER listening: PORT 5000");
+// import routes from "./routes";
+// console.log("typeDefs: ", typeDefs);
+export const server = new GraphQLServer({
+   typeDefs,
+   resolvers,
 });
+
+// TODO: Activate this checker
+//server.use(jwtChecker);
+
+export const options = {
+   port: 3100,
+   //  endpoint: "/",
+   //  subscriptions: "/subscriptions",
+   //  playground: "/playground",
+};
